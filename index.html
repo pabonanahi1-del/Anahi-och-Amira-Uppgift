@@ -1,101 +1,139 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Get Keke Out the Club! :: Anahi PAbon Reyes</title>
-  <meta name="description"
-    content="Get Keke Out the Club! is a browser game you play with sound. Made with HTML, CSS, JavaScript and the Web Audio API.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Keke Out the Club!</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- PixiJS ritar dansgolvet, discokulan och ljusstrålarna i det här canvaset, bakom sidan -->
+
+  <!-- Animated Pixi background -->
   <div id="stage" aria-hidden="true"></div>
 
-  <header class="top">
-    <a class="logo" href="./">Get Keke Out</a>
-    <nav aria-label="Main">
-      <a href="#about">about</a>
-      <a href="#gallery">gallery</a>
-      <a href="#video">video</a>
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT</a>
+      <a href="#gallery">GALLERY</a>
+      <a href="#video">VIDEO</a>
     </nav>
   </header>
 
   <main>
-    <!-- HERO: discokulan hänger i mitten, namnet ligger under -->
-    <section class="hero">
-      <!-- tom ruta: main.js ritar discokulan precis här -->
-      <div id="kula" aria-hidden="true"></div>
 
-      <!-- BYT UT mot era namn, till exempel "ANNA + SARA" -->
-      <h1>DITT NAMN</h1>
-      <p class="sub">creator of Get Keke Out the Club!</p>
-      <p class="hint" aria-hidden="true">▼ scroll</p>
-    </section>
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
 
-    <!-- ABOUT: ca 100 ord om projektet och skaparna. Ändra fritt. -->
-    <section id="about" class="panel">
-      <h2>about</h2>
-      <p>
-        <strong>Get Keke Out the Club!</strong> is a browser game controlled by sound. Keke is in a hurry, and the
-        player steers her sideways through a neon dance floor using a microphone, or a contact mic you tap on a CD.
-        The louder the sound, the further right she goes, and she has to dodge obstacles like an ex and a spilled drink
-        to reach the exit. The game is built with HTML, CSS and JavaScript and measures sound with the Web Audio API.
-        We are <strong>NAMN</strong> and <strong>NAMN</strong>, and we made it as our final project in
-        <strong>KURSNAMN</strong>.
+      <p class="top-label">A DIGITAL GAME PROJECT</p>
+
+      <h1>ANAHI PABON REYES</h1>
+
+      <div class="hero-line"></div>
+
+      <h2>GET KEKE OUT THE CLUB!</h2>
+
+      <p class="hero-description">
+        A CREATIVE GAME PROJECT
       </p>
+
+      <a class="scroll-link" href="#about">
+        SCROLL TO EXPLORE ↓
+      </a>
+
     </section>
 
-    <!-- GALLERY: 5 foton. Lägg filerna i mappen images/ och döp dem foto1.jpg ... foto5.jpg -->
-    <section id="gallery" class="panel panel-pink">
-      <h2>gallery</h2>
-      <div class="galleri">
-        <figure data-fil="images/foto1.jpg">
-          <img src="images/foto1.jpg" alt="BESKRIV FOTO 1" loading="lazy">
-          <figcaption>BILDTEXT 1</figcaption>
-        </figure>
-        <figure data-fil="images/foto2.jpg">
-          <img src="images/foto2.jpg" alt="BESKRIV FOTO 2" loading="lazy">
-          <figcaption>BILDTEXT 2</figcaption>
-        </figure>
-        <figure data-fil="images/foto3.jpg">
-          <img src="images/foto3.jpg" alt="BESKRIV FOTO 3" loading="lazy">
-          <figcaption>BILDTEXT 3</figcaption>
-        </figure>
-        <figure data-fil="images/foto4.jpg">
-          <img src="images/foto4.jpg" alt="BESKRIV FOTO 4" loading="lazy">
-          <figcaption>BILDTEXT 4</figcaption>
-        </figure>
-        <figure data-fil="images/foto5.jpg">
-          <img src="images/foto5.jpg" alt="BESKRIV FOTO 5" loading="lazy">
-          <figcaption>BILDTEXT 5</figcaption>
-        </figure>
+
+    <!-- ABOUT SECTION -->
+    <section class="content-section" id="about">
+
+      <p class="section-label">01 / THE PROJECT</p>
+
+      <h2>ABOUT THE GAME</h2>
+
+      <div class="text-panel">
+        <p>
+          Get Keke Out the Club! is a creative digital game project.
+          The project explores interactive storytelling and playful
+          visual design through a club-inspired aesthetic.
+          The experience combines visuals, sound and interaction
+          to create a playful digital environment.
+        </p>
       </div>
+
     </section>
 
-    <!-- VIDEO: längst ner. Lägg filen som video/demo.mp4 -->
-    <section id="video" class="panel panel-lila">
-      <h2>video</h2>
-      <video controls preload="metadata" poster="images/foto1.jpg">
-        <source src="video/demo.mp4" type="video/mp4">
-        Your browser does not support video.
-      </video>
+
+    <!-- GALLERY SECTION -->
+    <section class="content-section" id="gallery">
+
+      <p class="section-label">02 / VISUALS</p>
+
+      <h2>PROJECT GALLERY</h2>
+
+      <div class="gallery">
+
+        <figure>
+          <img src="images/foto1.jpg" alt="Project screenshot 1">
+          <figcaption>01 — GAME DESIGN</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/foto2.jpg" alt="Project screenshot 2">
+          <figcaption>02 — VISUAL STYLE</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/foto3.jpg" alt="Project screenshot 3">
+          <figcaption>03 — GAMEPLAY</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/foto4.jpg" alt="Project screenshot 4">
+          <figcaption>04 — DETAILS</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/foto5.jpg" alt="Project screenshot 5">
+          <figcaption>05 — FINAL RESULT</figcaption>
+        </figure>
+
+      </div>
+
     </section>
+
+
+    <!-- VIDEO SECTION -->
+    <section class="content-section" id="video">
+
+      <p class="section-label">03 / EXPERIENCE</p>
+
+      <h2>SEE IT IN ACTION</h2>
+
+      <div class="video-container">
+        <video controls preload="metadata" poster="images/foto1.jpg">
+          <source src="video/demo.mp4" type="video/mp4">
+          Your browser does not support video.
+        </video>
+      </div>
+
+    </section>
+
   </main>
 
-  <footer class="bottom">
-    <p>© 2026 DITT NAMN</p>
-    <p>hover the ball to make it spin, click to send a ripple of light</p>
+
+  <footer>
+    <p>GET KEKE OUT THE CLUB! — 2026</p>
+    <p>DESIGNED BY ANAHI PABON REYES</p>
   </footer>
 
+
+  <!-- PixiJS -->
   <script src="https://cdn.jsdelivr.net/npm/pixi.js@8.6.6/dist/pixi.min.js"></script>
   <script type="module" src="js/main.js"></script>
-</body>
 
+</body>
 </html>
