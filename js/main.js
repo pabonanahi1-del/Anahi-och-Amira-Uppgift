@@ -229,28 +229,28 @@ if (!stage || !kula || !window.PIXI) {
       }
     }
 
-    // Placera animationen efter kulan i HTML
-    function animate() {
+  
+function animate() {
 
-      const rect = kula.getBoundingClientRect();
+  const rect = kula.getBoundingClientRect();
+  const canvasRect = app.canvas.getBoundingClientRect();
 
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
+  // Omvandla positionen till canvasens koordinater
+  const x = rect.left + rect.width / 2 - canvasRect.left;
+  const y = rect.top + rect.height / 2 - canvasRect.top;
 
-      const radius = Math.min(rect.width, rect.height) * 0.43;
+  const radius = Math.min(rect.width, rect.height) * 0.43;
 
-      // Uppdatera rotationshastigheten
-      speed += (targetSpeed - speed) * 0.05;
+  speed += (targetSpeed - speed) * 0.05;
 
-      if (!reducedMotion.matches) {
-        rotation += speed;
-      }
+  if (!reducedMotion.matches) {
+    rotation += speed;
+  }
 
-      // Rita om animationerna
-      drawLights(x, y, radius);
-      drawBall(x, y, radius);
-      drawRipple(x, y, radius);
-    }
+  drawLights(x, y, radius);
+  drawBall(x, y, radius);
+  drawRipple(x, y, radius);
+}
 
     // Uppdatera animationen
     app.ticker.add(animate);
