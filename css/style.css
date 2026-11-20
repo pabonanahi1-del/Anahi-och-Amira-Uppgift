@@ -419,18 +419,26 @@ footer {
 
 .hero-description {
   display: block;
-  color: white;
+  color: white !important;
+  font-size: 13px;
+  letter-spacing: 3px;
+  line-height: 2.5;
+  position: relative;
+  z-index: 20;
   visibility: visible;
   opacity: 1;
 }
 
 .hero-description a {
   display: inline-block;
-  color: #19e6ff;
-  visibility: visible;
-  opacity: 1;
+  color: white !important;
+  font-size: 15px;
+  font-weight: bold;
   text-decoration: underline;
+  text-shadow: 0 0 10px #19e6ff, 0 0 20px #8a3dff;
   margin-left: 8px;
   position: relative;
-  z-index: 10;
+  z-index: 20;
+  visibility: visible;
+  opacity: 1;
 }
