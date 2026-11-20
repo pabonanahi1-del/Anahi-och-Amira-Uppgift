@@ -312,3 +312,108 @@ footer {
     padding: 22px;
   }
 }
+
+/* DANCE FLOOR - HERO ONLY */
+
+.hero {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+#dancefloor {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: min(850px, 95vw);
+  height: 390px;
+
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 4px;
+
+  opacity: 0.38;
+  pointer-events: none;
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 12%,
+    black 75%,
+    transparent
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 12%,
+    black 75%,
+    transparent
+  );
+}
+
+.dance-tile {
+  background: #24105c;
+  border: 2px solid rgba(25,230,255,0.4);
+  box-shadow: inset 0 0 12px rgba(25,230,255,0.12);
+  transition:
+    background-color 1.4s ease,
+    box-shadow 1.4s ease;
+}
+
+/* Färgvarianter */
+
+.dance-tile.cyan {
+  background: #19e6ff;
+  box-shadow: inset 0 0 18px #19e6ff;
+}
+
+.dance-tile.pink {
+  background: #ff3fb4;
+  box-shadow: inset 0 0 18px #ff3fb4;
+}
+
+.dance-tile.purple {
+  background: #8a3dff;
+  box-shadow: inset 0 0 18px #8a3dff;
+}
+
+.dance-tile.dark {
+  background: #24105c;
+  box-shadow: inset 0 0 12px #8a3dff;
+}
+
+/* Keep text above the floor */
+
+.hero > *:not(#dancefloor) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Stronger text shadow for readability */
+
+.hero h1 {
+  text-shadow:
+    4px 4px 0 #8a3dff,
+    -2px -2px 0 #070418,
+    0 0 18px rgba(25,230,255,0.8),
+    0 0 35px rgba(7,4,24,1);
+}
+
+.hero h2 {
+  text-shadow:
+    2px 2px 0 #8a3dff,
+    0 0 15px #070418;
+}
+
+@media (max-width: 650px) {
+  #dancefloor {
+    height: 300px;
+    width: 100vw;
+    gap: 3px;
+  }
+}
+
