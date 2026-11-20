@@ -29,14 +29,14 @@ if (!stage || !kula || !window.PIXI) {
   // Starta animationen
   async function start() {
 
-    await app.init({
-      resizeTo: window,
-      backgroundAlpha: 0,
-      antialias: true,
-      resolution: Math.min(window.devicePixelRatio || 1, 2),
-      autoDensity: true
-    });
-
+   await app.init({
+  width: window.innerWidth,
+  height: window.innerHeight,
+  backgroundAlpha: 0,
+  antialias: true,
+  resolution: Math.min(window.devicePixelRatio || 1, 2),
+  autoDensity: true
+});
     // Lägg canvas bakom hemsidan
     stage.appendChild(app.canvas);
 
@@ -233,11 +233,9 @@ if (!stage || !kula || !window.PIXI) {
 function animate() {
 
   const rect = kula.getBoundingClientRect();
-  const canvasRect = app.canvas.getBoundingClientRect();
 
-  // Omvandla positionen till canvasens koordinater
-  const x = rect.left + rect.width / 2 - canvasRect.left;
-  const y = rect.top + rect.height / 2 - canvasRect.top;
+  const x = rect.left + rect.width / 2;
+  const y = rect.top + rect.height / 2;
 
   const radius = Math.min(rect.width, rect.height) * 0.43;
 
@@ -246,6 +244,11 @@ function animate() {
   if (!reducedMotion.matches) {
     rotation += speed;
   }
+
+  drawLights(x, y, radius);
+  drawBall(x, y, radius);
+  drawRipple(x, y, radius);
+}
 
   drawLights(x, y, radius);
   drawBall(x, y, radius);
