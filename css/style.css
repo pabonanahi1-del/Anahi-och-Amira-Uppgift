@@ -1,4 +1,8 @@
 
+/* PIXEL FONT */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
 /* GENERAL */
 
 * {
@@ -12,28 +16,12 @@ html {
 }
 
 body {
-  background: #070418;
+  background:
+    radial-gradient(ellipse at 50% 35%, #191039 0%, #070418 65%);
   color: white;
   font-family: "Courier New", monospace;
   text-align: center;
   overflow-x: hidden;
-}
-
-/* Pixel scanlines */
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 5;
-  pointer-events: none;
-  opacity: 0.12;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 3px,
-    rgba(255,255,255,0.15) 4px
-  );
 }
 
 
@@ -51,24 +39,15 @@ body::after {
 }
 
 
-/* HEADER - GAME HUD */
+/* HEADER */
 
 header {
   position: relative;
   z-index: 2;
   padding: 22px 15px;
-  background: linear-gradient(
-    180deg,
-    #ff83d3 0%,
-    #ff3fb4 65%,
-    #8a3dff 100%
-  );
-
-  border-bottom: 4px solid #19e6ff;
-
-  box-shadow:
-    0 4px 15px #ff3fb4,
-    0 5px 25px rgba(25,230,255,0.4);
+  background: rgba(7,4,24,0.9);
+  border-bottom: 2px solid #8a3dff;
+  box-shadow: 0 3px 18px rgba(138,61,255,0.2);
 }
 
 nav {
@@ -76,26 +55,21 @@ nav {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 35px;
 }
 
 nav a {
-  color: #070418;
+  color: #19e6ff;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
-  letter-spacing: 2px;
-
-  padding: 8px 16px;
-  border: 2px solid transparent;
+  letter-spacing: 3px;
   transition: 0.2s;
 }
 
 nav a:hover {
-  color: white;
-  border: 2px solid white;
-  background: #8a3dff;
-  box-shadow: 0 0 12px #19e6ff;
+  color: #ff3fb4;
+  text-shadow: 0 0 12px #ff3fb4;
 }
 
 
@@ -106,58 +80,59 @@ nav a:hover {
   z-index: 1;
   min-height: 85vh;
   padding: 100px 20px 80px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   text-align: center;
 }
 
 .top-label {
   color: #19e6ff;
-  font-size: 12px;
-  letter-spacing: 5px;
+  font-size: 11px;
+  letter-spacing: 4px;
   margin-bottom: 35px;
-  text-shadow: 0 0 10px #19e6ff;
+  text-shadow: 0 0 8px #19e6ff;
 }
 
+
+/* YOUR NAME */
+
 .hero h1 {
+  max-width: 100%;
   color: white;
-  font-size: clamp(35px, 7vw, 85px);
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: clamp(20px, 4.5vw, 54px);
   font-weight: 900;
-  letter-spacing: 3px;
-  line-height: 1.2;
+  line-height: 1.7;
+  letter-spacing: 1px;
+  overflow-wrap: anywhere;
 
   text-shadow:
     4px 4px 0 #8a3dff,
-    -3px -3px 0 #ff3fb4,
-    0 0 25px #19e6ff;
+    0 0 15px rgba(25,230,255,0.5);
 }
 
 .hero-line {
-  width: 130px;
-  height: 5px;
+  width: 100px;
+  height: 4px;
   background: #ff3fb4;
-  margin: 35px auto;
-
-  box-shadow:
-    0 0 10px #ff3fb4,
-    0 0 25px #ff3fb4;
+  margin: 30px auto;
+  box-shadow: 0 0 15px #ff3fb4;
 }
 
 .hero h2 {
   color: #ff3fb4;
-  font-size: clamp(17px, 3vw, 28px);
-  letter-spacing: 4px;
-  margin-bottom: 20px;
-  text-shadow: 0 0 15px #ff3fb4;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: clamp(12px, 2vw, 20px);
+  line-height: 1.8;
+  margin-bottom: 18px;
+  text-shadow: 2px 2px 0 #8a3dff;
 }
 
 .hero-description {
   color: #19e6ff;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 4px;
 }
 
@@ -165,7 +140,7 @@ nav a:hover {
   position: absolute;
   bottom: 35px;
   color: #19e6ff;
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 3px;
   text-decoration: none;
   animation: blink 1.5s infinite;
@@ -173,7 +148,7 @@ nav a:hover {
 
 @keyframes blink {
   50% {
-    opacity: 0.35;
+    opacity: 0.4;
   }
 }
 
@@ -183,10 +158,9 @@ nav a:hover {
 .content-section {
   position: relative;
   z-index: 1;
-
   max-width: 1100px;
   margin: 0 auto;
-  padding: 100px 25px;
+  padding: 90px 25px;
 
   display: flex;
   flex-direction: column;
@@ -196,18 +170,18 @@ nav a:hover {
 
 .section-label {
   color: #19e6ff;
-  font-size: 11px;
-  letter-spacing: 5px;
+  font-size: 10px;
+  letter-spacing: 4px;
   margin-bottom: 20px;
-  text-shadow: 0 0 8px #19e6ff;
 }
 
 .content-section h2 {
   color: #ff3fb4;
-  font-size: clamp(25px, 4vw, 42px);
-  letter-spacing: 4px;
-  margin-bottom: 40px;
-  text-shadow: 3px 3px 0 #8a3dff;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: clamp(13px, 2.5vw, 22px);
+  line-height: 1.8;
+  margin-bottom: 35px;
+  text-shadow: 2px 2px 0 #8a3dff;
 }
 
 
@@ -215,15 +189,13 @@ nav a:hover {
 
 .text-panel {
   width: 100%;
-  max-width: 750px;
-  padding: 35px;
+  max-width: 700px;
+  padding: 30px;
 
-  border: 3px solid #19e6ff;
-  background: rgba(7,4,24,0.92);
+  background: rgba(18,10,42,0.85);
+  border: 1px solid rgba(25,230,255,0.65);
 
-  box-shadow:
-    6px 6px 0 #8a3dff,
-    0 0 20px rgba(25,230,255,0.25);
+  box-shadow: 0 0 18px rgba(25,230,255,0.08);
 
   color: #d4cde8;
   font-size: 14px;
@@ -236,36 +208,26 @@ nav a:hover {
 
 .gallery {
   width: 100%;
-  max-width: 950px;
+  max-width: 900px;
   margin: 0 auto;
 
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  justify-content: center;
-  gap: 25px;
+  gap: 22px;
 }
 
 .gallery figure {
   width: 100%;
-  padding: 12px;
-
-  border: 3px solid #19e6ff;
-  background: rgba(7,4,24,0.95);
-
-  box-shadow:
-    5px 5px 0 #8a3dff,
-    0 0 15px rgba(25,230,255,0.2);
-
+  padding: 10px;
+  background: rgba(18,10,42,0.9);
+  border: 1px solid rgba(138,61,255,0.8);
   transition: 0.2s;
 }
 
 .gallery figure:hover {
-  transform: translateY(-5px);
-  border-color: #ff3fb4;
-
-  box-shadow:
-    5px 5px 0 #8a3dff,
-    0 0 25px rgba(255,63,180,0.5);
+  border-color: #19e6ff;
+  box-shadow: 0 0 18px rgba(25,230,255,0.2);
+  transform: translateY(-4px);
 }
 
 .gallery img {
@@ -274,15 +236,13 @@ nav a:hover {
   aspect-ratio: 16 / 10;
   object-fit: cover;
   image-rendering: pixelated;
-  border: 2px solid #8a3dff;
 }
 
 .gallery figcaption {
   color: #19e6ff;
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 2px;
-  padding: 17px 5px 7px;
-  text-align: center;
+  padding: 15px 5px 5px;
 }
 
 
@@ -290,16 +250,11 @@ nav a:hover {
 
 .video-container {
   width: 100%;
-  max-width: 850px;
-  margin: 0 auto;
-  padding: 12px;
-
-  border: 3px solid #ff3fb4;
-  background: rgba(7,4,24,0.95);
-
-  box-shadow:
-    6px 6px 0 #8a3dff,
-    0 0 25px rgba(255,63,180,0.25);
+  max-width: 800px;
+  padding: 10px;
+  background: rgba(18,10,42,0.9);
+  border: 1px solid #ff3fb4;
+  box-shadow: 0 0 18px rgba(255,63,180,0.12);
 }
 
 .video-container video {
@@ -313,14 +268,12 @@ nav a:hover {
 footer {
   position: relative;
   z-index: 1;
-  padding: 40px 15px;
-
-  border-top: 3px solid #19e6ff;
-  background: rgba(7,4,24,0.95);
-
+  padding: 35px 15px;
+  border-top: 1px solid #8a3dff;
+  background: rgba(7,4,24,0.9);
   color: #19e6ff;
   font-size: 10px;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   line-height: 2.5;
 }
 
@@ -330,12 +283,11 @@ footer {
 @media (max-width: 650px) {
 
   nav {
-    gap: 10px;
+    gap: 15px;
   }
 
   nav a {
     font-size: 10px;
-    padding: 7px;
   }
 
   .hero {
@@ -344,11 +296,11 @@ footer {
   }
 
   .hero h1 {
-    letter-spacing: 1px;
+    font-size: clamp(17px, 6vw, 28px);
   }
 
   .content-section {
-    padding: 75px 20px;
+    padding: 70px 20px;
   }
 
   .gallery {
