@@ -417,3 +417,20 @@ footer {
   }
 }
 
+.hero-description {
+  display: block;
+  color: white;
+  visibility: visible;
+  opacity: 1;
+}
+
+.hero-description a {
+  display: inline-block;
+  color: #19e6ff;
+  visibility: visible;
+  opacity: 1;
+  text-decoration: underline;
+  margin-left: 8px;
+  position: relative;
+  z-index: 10;
+}
