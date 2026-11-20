@@ -312,3 +312,28 @@ video {
   .hint { animation: none; }
   .galleri img { transition: none; }
 }
+#stage {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero {
+  position: relative;
+  z-index: 2;
+}
+
+#kula {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
