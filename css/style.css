@@ -1,339 +1,270 @@
-/* =========================================================
-   style.css :: samma färger och stil som spelet
-   1. Färger och storlekar
-   2. Grund
-   3. Header
-   4. Hero (discokula + namn)
-   5. Paneler
-   6. Galleri
-   7. Video
-   8. Footer
-   ========================================================= */
 
+/* GENERAL */
 
-/* ---------- 1. Färger och storlekar ----------
-   Alla färger kommer från spelet. main.js använder samma färger. */
-:root {
-  color-scheme: dark;
-  --bg: #070418;
-  --golv: #0b0720;
-  --cyan: #19e6ff;
-  --rosa: #ff3fb4;
-  --lila: #8a3dff;
-  --lila-kant: #b427f5;
-  --pixel: "Press Start 2P", monospace;
-
-  --edge: clamp(1rem, 4vw, 3rem);
-  --gap: clamp(0.8rem, 2vw, 1.5rem);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-/* ---------- 2. Grund ---------- */
-*, *::before, *::after { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  margin: 0;
-  background: var(--bg);
-  color: #fff;
-  font-family: "Trebuchet MS", Verdana, system-ui, sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.7;
+  background: #070418;
+  color: white;
+  font-family: "Courier New", monospace;
+  overflow-x: hidden;
 }
 
-a { color: inherit; }
-a:hover { color: var(--cyan); }
-:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
 
-/* Canvaset ligger fast bakom sidan och släpper igenom klick */
+/* PIXI BACKGROUND */
+
 #stage {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
 }
-#stage canvas { display: block; }
-
-main, .bottom {
-  position: relative;
-  z-index: 1;
-}
-
-main { padding: 0 var(--edge); }
-
-
-/* ---------- 3. Header ----------
-   Samma rosa glittriga bar med neonblå kant som kontrollraden i spelet */
-.top {
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  height: 60px;
-  padding: 0 var(--edge);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 0 0 6px var(--rosa);
-  background-image:
-    radial-gradient(circle at 12% 30%, #fff 0 1.5px, transparent 2px),
-    radial-gradient(circle at 47% 70%, #fff 0 1.5px, transparent 2px),
-    radial-gradient(circle at 83% 25%, #fff 0 1.5px, transparent 2px),
-    linear-gradient(180deg, #ff9be0 0%, #ff3fb4 45%, #8a1fb0 100%);
-  background-size: 220px 60px, 310px 60px, 170px 60px, 100% 100%;
-  border-bottom: 3px solid var(--cyan);
-  box-shadow: 0 0 18px var(--cyan);
-}
-
-.logo {
-  text-decoration: none;
-  font-size: 1.15rem;
-  letter-spacing: 0.02em;
-}
-
-.top nav { display: flex; gap: 0.6rem; }
-
-/* Länkarna ser ut som krom-pillerknapparna i spelet */
-.top nav a {
-  padding: 4px 16px;
-  font-size: 0.9rem;
-  text-decoration: none;
-  color: #5b1fa8;
-  text-shadow: none;
-  border: 2px solid #fff;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #ffffff 0%, #e6d4ff 45%, #b99aff 50%, #e9d9ff 100%);
-  box-shadow: 0 2px 6px rgba(80, 0, 120, 0.5), inset 0 1px 0 #fff;
-}
-.top nav a:hover {
-  color: #5b1fa8;
-  box-shadow: 0 0 12px var(--cyan), inset 0 1px 0 #fff;
-}
-
-
-/* ---------- 4. Hero ----------
-   Discokulan är en tom ruta här. Själva kulan ritas av main.js (PixiJS) på exakt samma plats. */
-.hero {
-  min-height: calc(100vh - 60px);
-  padding: clamp(3rem, 12vh, 7rem) 0 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-#kula {
-  width: clamp(190px, 34vw, 340px);
-  aspect-ratio: 1;
-  margin-bottom: clamp(1.5rem, 5vh, 3rem);
-}
-
-/* Namnet: rosa pixeltext med glöd, som rubriken i spelets inforuta */
-.hero h1 {
-  margin: 0;
-  font-family: var(--pixel);
-  font-weight: 400;
-  font-size: clamp(1.2rem, 4.4vw, 2.8rem);
-  line-height: 1.4;
-  color: var(--rosa);
-  text-shadow: 4px 4px 0 #550044, 0 0 20px var(--rosa);
-  overflow-wrap: anywhere;
-}
-
-.sub {
-  margin: 1.2rem 0 0;
-  font-family: var(--pixel);
-  font-size: clamp(0.6rem, 1.6vw, 0.9rem);
-  line-height: 1.8;
-  color: var(--cyan);
-  text-shadow: 0 0 10px var(--cyan);
-}
-
-.hint {
-  margin: auto 0 0;
-  padding-top: 2rem;
-  font-family: var(--pixel);
-  font-size: 0.65rem;
-  color: #fff;
-  animation: blinka 1.4s steps(2, jump-none) infinite;
-}
-
-@keyframes blinka {
-  0%   { opacity: 1; }
-  100% { opacity: 0.2; }
-}
-
-
-/* ---------- 5. Paneler ----------
-   Mörka rutor med neonkant, som popup-rutorna i spelet. De gör texten läsbar ovanpå ljusstrålarna. */
-.panel {
-  max-width: 62rem;
-  margin: 0 auto clamp(3rem, 9vh, 5.5rem);
-  padding: clamp(1.5rem, 4vw, 3rem);
-  background: rgba(11, 7, 32, 0.86);
-  border: 5px solid var(--cyan);
-  box-shadow: 0 0 30px var(--cyan);
-  scroll-margin-top: 90px;
-}
-
-.panel-pink {
-  border-color: var(--rosa);
-  box-shadow: 0 0 30px var(--rosa);
-}
-
-.panel-lila {
-  border-color: var(--lila-kant);
-  box-shadow: 0 0 30px #8915be;
-}
-
-.panel h2 {
-  margin: 0 0 1.5rem;
-  font-family: var(--pixel);
-  font-weight: 400;
-  font-size: clamp(1rem, 2.6vw, 1.6rem);
-  color: var(--cyan);
-  text-shadow: 3px 3px 0 #00aa8e, 0 0 16px var(--cyan);
-}
-
-.panel-pink h2 {
-  color: var(--rosa);
-  text-shadow: 3px 3px 0 #550044, 0 0 16px var(--rosa);
-}
-
-.panel-lila h2 {
-  color: #c9a0ff;
-  text-shadow: 3px 3px 0 #3a0f7a, 0 0 16px var(--lila);
-}
-
-.panel p { margin: 0; max-width: 46rem; }
-.panel strong { color: var(--cyan); }
-
-
-/* ---------- 6. Galleri ----------
-   3 kolumner. Första bilden är bredare, så det blir en galleriuppställning. */
-.galleri {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: clamp(150px, 20vw, 280px);
-  gap: var(--gap);
-}
-
-.galleri figure:first-child { grid-column: span 2; }
-
-.galleri figure {
-  position: relative;
-  margin: 0;
-  overflow: hidden;
-  background: #120a35;
-  border: 3px solid var(--cyan);
-  box-shadow: 0 0 14px rgba(25, 230, 255, 0.6);
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.galleri img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s;
-}
-
-.galleri figure:hover {
-  border-color: var(--rosa);
-  box-shadow: 0 0 22px var(--rosa);
-}
-.galleri figure:hover img { transform: scale(1.05); }
-
-.galleri figcaption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 0.6rem 0.8rem;
-  font-family: var(--pixel);
-  font-size: 0.55rem;
-  line-height: 1.6;
-  background: rgba(7, 4, 24, 0.82);
-  color: #fff;
-}
-
-/* Visas om en bild saknas, så att det syns vilken fil som ska läggas in */
-.galleri figure.saknas img { display: none; }
-.galleri figure.saknas::before {
-  content: "add " attr(data-fil);
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-family: var(--pixel);
-  font-size: 0.6rem;
-  color: var(--cyan);
-}
-
-
-/* ---------- 7. Video ---------- */
-video {
-  display: block;
-  width: 100%;
-  max-height: 80vh;
-  background: #000;
-  border: 3px solid #e0b3ff;
-  box-shadow: 4px 4px 0 #3a0f7a;
-}
-
-
-/* ---------- 8. Footer ---------- */
-.bottom {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 2rem var(--edge) 3rem;
-  font-size: 0.9rem;
-  color: #c9c9ff;
-  background: linear-gradient(180deg, transparent, rgba(7, 4, 24, 0.9));
-}
-.bottom p { margin: 0; }
-
-
-/* ---------- Mobil ---------- */
-@media (max-width: 700px) {
-  .galleri { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
-  .galleri figure:first-child { grid-column: span 2; }
-  .logo { font-size: 0.95rem; }
-  .top nav a { padding: 3px 10px; font-size: 0.8rem; }
-}
-
-/* Samma hänsyn som i spelet: ingen rörelse för den som valt "minska rörelse" */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .hint { animation: none; }
-  .galleri img { transition: none; }
-}
-#stage {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
 
 #stage canvas {
   display: block;
-  width: 100%;
-  height: 100%;
 }
+
+
+/* HEADER */
+
+header {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 25px 8%;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 45px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #19e6ff;
+}
+
+
+/* HERO */
 
 .hero {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px;
 }
 
-#kula {
+.top-label {
+  color: #19e6ff;
+  font-size: 12px;
+  letter-spacing: 5px;
+  margin-bottom: 35px;
+}
+
+.hero h1 {
+  font-size: clamp(35px, 7vw, 85px);
+  font-weight: 900;
+  letter-spacing: 3px;
+  line-height: 1.1;
+  text-shadow:
+    3px 3px 0 #8a3dff,
+    0 0 20px rgba(25,230,255,0.5);
+}
+
+.hero-line {
+  width: 100px;
+  height: 4px;
+  background: #ff3fb4;
+  margin: 30px auto;
+  box-shadow: 0 0 15px #ff3fb4;
+}
+
+.hero h2 {
+  color: #ff3fb4;
+  font-size: clamp(17px, 3vw, 28px);
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+}
+
+.hero-description {
+  color: #b9b1d8;
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+.scroll-link {
+  position: absolute;
+  bottom: 35px;
+  color: #19e6ff;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.scroll-link:hover {
+  color: #ff3fb4;
+}
+
+
+/* CONTENT SECTIONS */
+
+.content-section {
   position: relative;
-  z-index: 2;
-  cursor: pointer;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 30px;
+}
+
+.section-label {
+  color: #19e6ff;
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-bottom: 18px;
+}
+
+.content-section h2 {
+  color: #ff3fb4;
+  font-size: clamp(25px, 4vw, 42px);
+  letter-spacing: 3px;
+  margin-bottom: 35px;
+}
+
+
+/* ABOUT */
+
+.text-panel {
+  border: 1px solid rgba(138,61,255,0.7);
+  background: rgba(18,10,42,0.85);
+  padding: 35px;
+  line-height: 1.9;
+  color: #d4cde8;
+  font-size: 14px;
+  max-width: 750px;
+}
+
+
+/* GALLERY */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.gallery figure {
+  border: 1px solid rgba(25,230,255,0.4);
+  background: rgba(18,10,42,0.9);
+  padding: 12px;
+  transition: 0.3s;
+}
+
+.gallery figure:hover {
+  border-color: #ff3fb4;
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255,63,180,0.2);
+}
+
+.gallery img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+.gallery figcaption {
+  color: #19e6ff;
+  font-size: 11px;
+  letter-spacing: 2px;
+  padding: 15px 5px 5px;
+}
+
+
+/* VIDEO */
+
+.video-container {
+  width: 100%;
+  max-width: 850px;
+  border: 1px solid #8a3dff;
+  padding: 10px;
+  background: rgba(18,10,42,0.9);
+}
+
+.video-container video {
+  width: 100%;
+  display: block;
+}
+
+
+/* FOOTER */
+
+footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  text-align: center;
+  padding: 35px 15px;
+  color: #a49bbd;
+  font-size: 10px;
+  letter-spacing: 2px;
+  line-height: 2.2;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+  nav {
+    gap: 17px;
+  }
+
+  nav a {
+    font-size: 10px;
+  }
+
+  .hero {
+    min-height: 75vh;
+  }
+
+  .hero h1 {
+    letter-spacing: 1px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .content-section {
+    padding: 70px 20px;
+  }
+
+  .text-panel {
+    padding: 22px;
+  }
+
 }
